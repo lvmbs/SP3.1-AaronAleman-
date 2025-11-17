@@ -1,0 +1,25 @@
+#!/bin/bash
+
+OUTPUT="errores_filtrados.log"
+LOGDIR="/var/log"
+
+echo "Generando reporte de errores..."
+echo "REPORTE DE ERRORES EN $LOGDIR:" > "$OUTPUT"
+echo "" >> "$OUTPUT"
+
+# RECORRE TODOS LOS ARCHIVOS REGULARES DE /VAR/LOG
+for file in "$LOGDIR"/*; do
+    if [[ -f "$file" ]]; then
+        # BUSQUEDA DE LINEAS CON ERROR O FAIL
+        ERRORS=$(grep -iE "error|fail" "$file")
+
+        if [[ ! -z "$ERRORS" ]]; then
+            echo ">>> Archivo: $file" >> "$OUTPUT"
+            echo "----------------------------------------" >> "$OUTPUT"
+            echo "$ERRORS" >> "$OUTPUT"
+            echo "" >> "$OUTPUT"
+        fi
+    fi
+done
+
+echo "Reporte generado en: $OUTPUT"
