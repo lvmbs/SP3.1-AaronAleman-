@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# CARPETA A LA QUE HACER BACKUP
+ORIGEN="/home"
+
+# CARPETA DESTINO
+DESTINO="/bacaaron"
+
+# OBTENCIÓN DE MES Y AÑOS
+MES=$(date +"%B")
+ANIO=$(date +"%Y")
+
+# NOMBRE FINAL DEL ARCHIVO
+NOMBRE="CopTot-$MES-$ANIO.tar.gz"
+
+# CREACIÓN DE LA COPIA TOTAL
+tar -czf "$DESTINO/$NOMBRE" "$ORIGEN"

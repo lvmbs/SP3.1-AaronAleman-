@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# DIRECTORIO DONDE SE ALMACENAN LOS BACKUPS
+DESTINO="/bacaaron"
+
+# BUSCAR Y ELIMINAR SOLO LAS COPIAS DIFERENCIALES
+find "$DESTINO" -type f -name "CopDifSem-*.tar.gz" -delete
