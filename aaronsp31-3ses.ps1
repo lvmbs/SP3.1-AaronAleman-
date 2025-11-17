@@ -15,10 +15,9 @@ $eventos = Get-WinEvent -FilterHashtable @{
     EndTime = $FechaFin
 } | Where-Object {
     $_.Properties[5].Value -ne 'SYSTEM' # EXCLUYE AL USUARIO SYSTEM DE LA LISTA DE EVENTOS
-}
 
 # SELECCIÓN DE FECHA Y NOMBRE EN LA LISTA DE EVENTOS PARA MOSTRARLOS
-| Select-Object @{
+} | Select-Object @{
     Name='Fecha'
     Expression = { $_.TimeCreated }
 }, @{
